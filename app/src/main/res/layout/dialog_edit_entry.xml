@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Modifier le titre" />
+
+    <EditText
+        android:id="@+id/editContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Modifier le contenu" />
+
+    <CheckBox
+        android:id="@+id/editCheckPersonal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personnel" />
+
+    <CheckBox
+        android:id="@+id/editCheckWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Travail" />
+
+    <CheckBox
+        android:id="@+id/editCheckTravel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voyage" />
+
+    <Button
+        android:id="@+id/buttonChangeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Changer la date" />
+</LinearLayout>

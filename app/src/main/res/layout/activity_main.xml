@@ -6,20 +6,47 @@
     android:padding="16dp">
 
 
-    <EditText
-        android:id="@+id/editTextTitle"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titre du journal" />
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageTitle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/in_titre"
+            android:contentDescription="Icône du titre"
+            android:padding="8dp"/>
 
-    <EditText
-        android:id="@+id/editTextContent"
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Titre du journal"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contenu du journal"
-        android:inputType="textMultiLine"
-        android:lines="5" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageContent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/in_titre"
+            android:contentDescription="Icône du titre"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/editTextContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Contenu du journal"/>
+    </LinearLayout>
 
 
     <DatePicker
@@ -28,23 +55,71 @@
         android:layout_height="wrap_content" />
 
 
-    <CheckBox
-        android:id="@+id/checkBoxPersonal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Personnel" />
 
-    <CheckBox
-        android:id="@+id/checkBoxWork"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Travail" />
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/checkBoxTravel"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imagePersonalBox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/in_personnel"
+            android:contentDescription="Icône du personnel"
+            android:padding="8dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personnel" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Voyage" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageWorkBox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/in_travail"
+            android:contentDescription="Icône du travail"
+            android:padding="8dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Travail" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageTravelBox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/in_voyage"
+            android:contentDescription="Icône du voyage"
+            android:padding="8dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxTravel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voyage" />
+    </LinearLayout>
+
+
 
 
     <Button

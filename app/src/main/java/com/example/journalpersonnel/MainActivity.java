@@ -1,7 +1,9 @@
 package com.example.journalpersonnel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -54,6 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         updateListView();
+        listViewEntries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                JournalEntry entry = journalEntries.get(position);
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("title", entry.getTitle());
+                intent.putExtra("date", entry.getDate());
+                intent.putExtra("content", entry.getContent());
+                intent.putExtra("tags", entry.getTags().toString());
+
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void saveJournalEntry() {
@@ -71,10 +88,15 @@ public class MainActivity extends AppCompatActivity {
         journalEntries.add(entry);
         updateListView();
         Toast.makeText(this, "Entrée enregistrée avec succés", Toast.LENGTH_SHORT).show();
+        editTextTitle.setText("");
+        editTextContent.setText("");
+        checkBoxPersonal.setChecked(false);
+        checkBoxWork.setChecked(false);
+        checkBoxTravel.setChecked(false);
     }
 
     private void updateListView() {
-        ArrayAdapter<JournalEntry> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, journalEntries);
+        JournalEntryAdapter adapter = new JournalEntryAdapter(this, journalEntries);
         listViewEntries.setAdapter(adapter);
     }
 }
