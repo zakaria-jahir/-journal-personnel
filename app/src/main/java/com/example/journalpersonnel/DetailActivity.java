@@ -24,7 +24,6 @@ public class DetailActivity extends AppCompatActivity {
         TextView textViewDate = findViewById(R.id.textViewDate);
         TextView textViewContent = findViewById(R.id.textViewContent);
         TextView textViewTags = findViewById(R.id.textViewTags);
-        Button buttonMain = findViewById(R.id.buttonMain);
 
         textViewTitle.setText(title);
         textViewDate.setText(date);
@@ -32,13 +31,5 @@ public class DetailActivity extends AppCompatActivity {
         textViewTags.setText(tags);
 
 
-        buttonMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DetailActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 }

@@ -31,6 +31,22 @@ public class JournalEntry {
         return tags;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return date + " - " + title + " - " + tags;
