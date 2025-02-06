@@ -1,43 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Modifier le titre" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Modifier le contenu" />
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titre" />
 
-    <CheckBox
-        android:id="@+id/editCheckPersonal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Personnel" />
+        <EditText
+            android:id="@+id/editTextContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contenu"
+            android:layout_marginTop="8dp" />
 
-    <CheckBox
-        android:id="@+id/editCheckWork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Travail" />
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
-    <CheckBox
-        android:id="@+id/editCheckTravel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voyage" />
+        <CheckBox
+            android:id="@+id/checkBoxPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personnel"
+            android:layout_marginTop="8dp" />
 
-    <Button
-        android:id="@+id/buttonChangeDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Changer la date" />
-</LinearLayout>
+        <CheckBox
+            android:id="@+id/checkBoxWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Travail" />
+
+        <CheckBox
+            android:id="@+id/checkBoxTravel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voyage" />
+    </LinearLayout>
+</ScrollView>

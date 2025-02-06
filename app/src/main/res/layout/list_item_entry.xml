@@ -92,4 +92,16 @@
 
     </LinearLayout>
 
+    <!-- Icône pour le menu contextuel -->
+    <ImageView
+        android:id="@+id/imageViewMenu"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/in_menu"
+        android:contentDescription="Menu contextuel"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
 </LinearLayout>
