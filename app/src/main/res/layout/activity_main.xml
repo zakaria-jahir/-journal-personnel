@@ -50,10 +50,19 @@
     </LinearLayout>
 
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/buttonSelectDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sélectionner la date"/>
+
+    <TextView
+        android:id="@+id/textViewSelectedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date sélectionnée : "
+        android:textSize="16sp"
+        android:padding="8dp" />
 
 
 
@@ -132,5 +141,54 @@
         android:id="@+id/listViewEntries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:descendantFocusability="blocksDescendants"/>
+
+    <!-- Partie details en bas -->
+    <LinearLayout
+        android:id="@+id/selectedEntryDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewSelectedTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textViewSelectedDateDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textViewSelectedContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textViewSelectedTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#888888" />
+
+        <Button
+            android:id="@+id/buttonHideDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hide Details"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
 </LinearLayout>

@@ -3,33 +3,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginTop="30dp">
 
-    <TextView
-        android:id="@+id/textViewTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
 
-    <TextView
-        android:id="@+id/textViewDate"
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp">
 
-    <TextView
-        android:id="@+id/textViewContent"
+        <ImageView
+            android:id="@+id/imageViewDateIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_date"
+            android:contentDescription="Icône de la date" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp">
 
-    <TextView
-        android:id="@+id/textViewTags"
+        <ImageView
+            android:id="@+id/imageViewContentIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_journal"
+            android:contentDescription="Icône du contenu" />
+
+        <TextView
+            android:id="@+id/textViewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp">
+
+        <ImageView
+            android:id="@+id/imageViewTagsIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/in_journal"
+            android:contentDescription="Icône des tags"/>
+
+        <TextView
+            android:id="@+id/textViewTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+
 
 </LinearLayout>
