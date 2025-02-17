@@ -1,7 +1,6 @@
 package com.example.journalpersonnel;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -25,16 +25,18 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonSave, buttonSelectDate;
     private ListView listViewEntries;
     private List<JournalEntry> journalEntries = new ArrayList<>();
-    private JournalEntryAdapter adapter;
+    JournalEntryAdapter adapter;
     private int selectedDay, selectedMonth, selectedYear;
     private TextView textViewSelectedTitle, textViewSelectedDateDetails, textViewSelectedContent, textViewSelectedTags;
     private LinearLayout selectedEntryDetails;
+    private int currentIndex = -1; // Tracks the currently displayed entry in the details section
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize views
         editTextTitle = findViewById(R.id.editTextTitle);
         editTextContent = findViewById(R.id.editTextContent);
         checkBoxPersonal = findViewById(R.id.checkBoxPersonal);
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSelectDate = findViewById(R.id.buttonSelectDate);
         textViewSelectedDate = findViewById(R.id.textViewSelectedDate);
         listViewEntries = findViewById(R.id.listViewEntries);
+
         // Initialize new views for selected entry details
         textViewSelectedTitle = findViewById(R.id.textViewSelectedTitle);
         textViewSelectedDateDetails = findViewById(R.id.textViewSelectedDateDetails);
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         selectedEntryDetails = findViewById(R.id.selectedEntryDetails);
         Button buttonHideDetails = findViewById(R.id.buttonHideDetails);
 
+        // Initialize adapter
         adapter = new JournalEntryAdapter(this, journalEntries);
         listViewEntries.setAdapter(adapter);
 
@@ -62,26 +66,33 @@ public class MainActivity extends AppCompatActivity {
         selectedYear = calendar.get(Calendar.YEAR);
         updateDateDisplay();
 
+        // Set up button listeners
         buttonSelectDate.setOnClickListener(v -> showDatePickerDialog());
-
         buttonSave.setOnClickListener(v -> saveJournalEntry());
 
         // Handle ListView item clicks
         listViewEntries.setOnItemClickListener((parent, view, position, id) -> {
-            JournalEntry selectedEntry = journalEntries.get(position);
-
-            // Populate the details section
-            textViewSelectedTitle.setText(selectedEntry.getTitle());
-            textViewSelectedDateDetails.setText("Date: " + selectedEntry.getDate());
-            textViewSelectedContent.setText(selectedEntry.getContent());
-            textViewSelectedTags.setText("Tags: " + selectedEntry.getTags().toString());
-
-            // Make the details section visible
-            selectedEntryDetails.setVisibility(View.VISIBLE);
+            currentIndex = position; // Set the current index to the clicked item
+            showEntryDetails(journalEntries.get(position));
         });
 
         // Handle "Hide Details" button click
         buttonHideDetails.setOnClickListener(v -> selectedEntryDetails.setVisibility(View.GONE));
+
+        // Add swipe listener to the details section
+        selectedEntryDetails.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                showNextEntry();
+            }
+
+            @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                showPreviousEntry();
+            }
+        });
     }
 
     private void showDatePickerDialog() {
@@ -127,4 +138,32 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Entrée enregistrée avec succès", Toast.LENGTH_SHORT).show();
     }
 
+    private void showEntryDetails(JournalEntry entry) {
+        // Populate the details section with the selected entry
+        textViewSelectedTitle.setText(entry.getTitle());
+        textViewSelectedDateDetails.setText("Date: " + entry.getDate());
+        textViewSelectedContent.setText(entry.getContent());
+        textViewSelectedTags.setText("Tags: " + entry.getTags().toString());
+
+        // Make the details section visible
+        selectedEntryDetails.setVisibility(View.VISIBLE);
+    }
+
+    private void showNextEntry() {
+        if (currentIndex < journalEntries.size() - 1) {
+            currentIndex++;
+            showEntryDetails(journalEntries.get(currentIndex));
+        } else {
+            Toast.makeText(this, "Aucune entrée suivante", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showPreviousEntry() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showEntryDetails(journalEntries.get(currentIndex));
+        } else {
+            Toast.makeText(this, "Aucune entrée précédente", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
